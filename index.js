@@ -9707,16 +9707,7 @@
                       switch (i.label) {
                         case 0:
                           if (
-                            (null ==
-                              (e = document.getElementById(
-                                this._containerId
-                              )) || e.setAttribute("data-aaad", "true"),
-                            null == e ||
-                              e.setAttribute(
-                                "data-aa-adunit",
-                                "/22181265/Test_abcd"
-                              ),
-                            !e)
+                            !(e = document.getElementById(this._containerId))
                           ) {
                             if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                               throw new Error(
@@ -9738,6 +9729,11 @@
                         case 1:
                           if (!(r = i.sent()))
                             return (
+                              e.setAttribute("data-aaad", "true"),
+                              e.setAttribute(
+                                "data-aa-adunit",
+                                "/22181265/Test_abcd"
+                              ),
                               this._environment !== c.ENVIRONMENT.PRODUCTION &&
                                 console.log(
                                   "Couldn't fetch ad from the server!"
