@@ -9727,7 +9727,11 @@
                               this._initRequest(),
                               [4, this._fetchAd(t)]);
                         case 1:
-                          if (!(r = i.sent()))
+                          if (
+                            ((r = i.sent()),
+                            console.log("My Response- " + r),
+                            !r)
+                          )
                             return (
                               e.setAttribute("data-aaad", "true"),
                               e.setAttribute(
