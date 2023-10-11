@@ -9707,7 +9707,16 @@
                       switch (i.label) {
                         case 0:
                           if (
-                            !(e = document.getElementById(this._containerId))
+                            (null ==
+                              (e = document.getElementById(
+                                this._containerId
+                              )) || e.setAttribute("data-aaad", "true"),
+                            null == e ||
+                              e.setAttribute(
+                                "data-aa-adunit",
+                                "/22181265/Test_abcd"
+                              ),
+                            !e)
                           ) {
                             if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                               throw new Error(
