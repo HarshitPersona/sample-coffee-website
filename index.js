@@ -9702,8 +9702,8 @@
                 }),
                 (e.prototype.showAd = function (t) {
                   return o(this, void 0, void 0, function () {
-                    var t, e;
-                    return a(this, function (n) {
+                    var t, e, n;
+                    return a(this, function (r) {
                       if (!(t = document.getElementById(this._containerId))) {
                         if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                           throw new Error(
@@ -9723,11 +9723,16 @@
                           this._initRequest(),
                           void 0,
                           console.log("My Response- " + undefined),
-                          t.setAttribute("data-aaad", "true"),
-                          t.setAttribute(
+                          t.removeChild(e),
+                          (n = document.createElement("div")).setAttribute(
+                            "data-aaad",
+                            "true"
+                          ),
+                          n.setAttribute(
                             "data-aa-adunit",
                             "/22181265/Test_abcd"
                           ),
+                          t.appendChild(n),
                           this._environment !== c.ENVIRONMENT.PRODUCTION &&
                             console.log("Couldn't fetch ad from the server!")),
                         [2]
