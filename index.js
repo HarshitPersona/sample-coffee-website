@@ -9725,19 +9725,16 @@
                               ),
                               e.appendChild(n),
                               this._initRequest(),
+                              [4, this._fetchAd(t)]);
+                        case 1:
+                          if (!(r = i.sent()))
+                            return (
+                              console.log("My Response- " + r),
                               e.setAttribute("data-aaad", "true"),
                               e.setAttribute(
                                 "data-aa-adunit",
                                 "/22181265/Test_abcd"
                               ),
-                              [4, this._fetchAd(t)]);
-                        case 1:
-                          if (
-                            ((r = i.sent()),
-                            console.log("My Response- " + r),
-                            !r)
-                          )
-                            return (
                               this._environment !== c.ENVIRONMENT.PRODUCTION &&
                                 console.log(
                                   "Couldn't fetch ad from the server!"
