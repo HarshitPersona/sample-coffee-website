@@ -9702,52 +9702,37 @@
                 }),
                 (e.prototype.showAd = function (t) {
                   return o(this, void 0, void 0, function () {
-                    var e, n, r;
-                    return a(this, function (i) {
-                      switch (i.label) {
-                        case 0:
-                          if (
-                            !(e = document.getElementById(this._containerId))
-                          ) {
-                            if (this._environment !== c.ENVIRONMENT.PRODUCTION)
-                              throw new Error(
-                                "No element found with given container id - ".concat(
-                                  this._containerId
-                                )
-                              );
-                            return [2];
-                          }
-                          return this._isCreativePresent(e)
-                            ? [3, 2]
-                            : ((n = document.createElement("div")).setAttribute(
-                                "style",
-                                "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
-                              ),
-                              this._initRequest(),
-                              [4, this._fetchAd(t)]);
-                        case 1:
-                          if (!(r = i.sent()))
-                            return (
-                              console.log("My Response- " + r),
-                              e.setAttribute("data-aaad", "true"),
-                              e.setAttribute(
-                                "data-aa-adunit",
-                                "/22181265/Test_abcd"
-                              ),
-                              this._environment !== c.ENVIRONMENT.PRODUCTION &&
-                                console.log(
-                                  "Couldn't fetch ad from the server!"
-                                ),
-                              [2]
-                            );
-                          this._renderAd(e, n, {
-                            creative: r,
-                            clientIdentity: t,
-                          }),
-                            (i.label = 2);
-                        case 2:
-                          return [2];
+                    var t;
+                    return a(this, function (e) {
+                      if (!(t = document.getElementById(this._containerId))) {
+                        if (this._environment !== c.ENVIRONMENT.PRODUCTION)
+                          throw new Error(
+                            "No element found with given container id - ".concat(
+                              this._containerId
+                            )
+                          );
+                        return [2];
                       }
+                      return (
+                        this._isCreativePresent(t) ||
+                          (document
+                            .createElement("div")
+                            .setAttribute(
+                              "style",
+                              "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
+                            ),
+                          this._initRequest(),
+                          void 0,
+                          console.log("My Response- " + undefined),
+                          t.setAttribute("data-aaad", "true"),
+                          t.setAttribute(
+                            "data-aa-adunit",
+                            "/22181265/Test_abcd"
+                          ),
+                          this._environment !== c.ENVIRONMENT.PRODUCTION &&
+                            console.log("Couldn't fetch ad from the server!")),
+                        [2]
+                      );
                     });
                   });
                 }),
