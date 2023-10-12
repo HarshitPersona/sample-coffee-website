@@ -9723,14 +9723,12 @@
                                 "style",
                                 "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
                               ),
-                              e.appendChild(n),
                               this._initRequest(),
                               [4, this._fetchAd(t)]);
                         case 1:
                           if (!(r = i.sent()))
                             return (
                               console.log("My Response- " + r),
-                              e.removeChild(n),
                               e.setAttribute("data-aaad", "true"),
                               e.setAttribute(
                                 "data-aa-adunit",
