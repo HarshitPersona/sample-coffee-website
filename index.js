@@ -1544,7 +1544,7 @@
                   !(function () {
                     if (!("document" in l)) return;
                     const t = m.bind(null, "dom"),
-                      e = x(t, !0);
+                      e = w(t, !0);
                     l.document.addEventListener("click", e, !1),
                       l.document.addEventListener("keypress", e, !1),
                       ["EventTarget", "Node"].forEach((e) => {
@@ -1562,7 +1562,7 @@
                                       {}),
                                     o = (s[n] = s[n] || { refCount: 0 });
                                   if (!o.handler) {
-                                    const r = x(t);
+                                    const r = w(t);
                                     (o.handler = r), e.call(this, n, r, i);
                                   }
                                   o.refCount++;
@@ -1792,7 +1792,7 @@
                   })();
                   break;
                 case "error":
-                  (w = l.onerror),
+                  (x = l.onerror),
                     (l.onerror = function (t, e, n, r, i) {
                       return (
                         m("error", {
@@ -1802,7 +1802,7 @@
                           msg: t,
                           url: e,
                         }),
-                        !(!w || w.__SENTRY_LOADER__) && w.apply(this, arguments)
+                        !(!x || x.__SENTRY_LOADER__) && x.apply(this, arguments)
                       );
                     }),
                     (l.onerror.__SENTRY_INSTRUMENTED__ = !0);
@@ -1848,7 +1848,7 @@
           let y;
           const b = 1e3;
           let S, E;
-          function x(t, e = !1) {
+          function w(t, e = !1) {
             return (n) => {
               if (!n || E === n) return;
               if (
@@ -1885,7 +1885,7 @@
                 }, b));
             };
           }
-          let w = null,
+          let x = null,
             T = null;
         },
         3793: (t, e, n) => {
@@ -2207,7 +2207,7 @@
               close: () => Mn,
               configureScope: () => ft,
               createTransport: () => Mt,
-              defaultIntegrations: () => An,
+              defaultIntegrations: () => In,
               defaultStackLineParsers: () => Tn,
               defaultStackParser: () => On,
               flush: () => Dn,
@@ -2222,7 +2222,7 @@
               makeXHRTransport: () => ln,
               onLoad: () => Nn,
               opera10StackLineParser: () => En,
-              opera11StackLineParser: () => wn,
+              opera11StackLineParser: () => xn,
               setContext: () => mt,
               setExtra: () => gt,
               setExtras: () => vt,
@@ -2230,7 +2230,7 @@
               setTags: () => yt,
               setUser: () => St,
               showReportDialog: () => kn,
-              startTransaction: () => xt,
+              startTransaction: () => wt,
               winjsStackLineParser: () => bn,
               withScope: () => Et,
               wrap: () => jn,
@@ -2373,21 +2373,21 @@
                 i = n(r);
               if ("function" == typeof i)
                 try {
-                  w(i, r);
+                  x(i, r);
                 } catch (t) {}
               t[e] = i;
             }
           }
-          function x(t, e, n) {
+          function w(t, e, n) {
             Object.defineProperty(t, e, {
               value: n,
               writable: !0,
               configurable: !0,
             });
           }
-          function w(t, e) {
+          function x(t, e) {
             var n = e.prototype || {};
-            (t.prototype = e.prototype = n), x(t, "__sentry_original__", e);
+            (t.prototype = e.prototype = n), w(t, "__sentry_original__", e);
           }
           function T(t) {
             return t.__sentry_original__;
@@ -2398,14 +2398,14 @@
                 message: t.message,
                 name: t.name,
                 stack: t.stack,
-                ...A(t),
+                ...I(t),
               };
             if (f(t)) {
               var e = {
                 type: t.type,
-                target: I(t.target),
-                currentTarget: I(t.currentTarget),
-                ...A(t),
+                target: A(t.target),
+                currentTarget: A(t.currentTarget),
+                ...I(t),
               };
               return (
                 "undefined" != typeof CustomEvent &&
@@ -2416,7 +2416,7 @@
             }
             return t;
           }
-          function I(t) {
+          function A(t) {
             try {
               return "undefined" != typeof Element && m(t, Element)
                 ? v(t)
@@ -2425,7 +2425,7 @@
               return "<unknown>";
             }
           }
-          function A(t) {
+          function I(t) {
             if ("object" == typeof t && null !== t) {
               var e = {};
               for (var n in t)
@@ -2654,7 +2654,7 @@
           function B(t) {
             if (t && t.__sentry_captured__) return !0;
             try {
-              x(t, "__sentry_captured__", !0);
+              w(t, "__sentry_captured__", !0);
             } catch (t) {}
             return !1;
           }
@@ -3481,13 +3481,13 @@
           function Et(t) {
             ot().withScope(t);
           }
-          function xt(t, e) {
+          function wt(t, e) {
             return ot().startTransaction(
               { metadata: { source: "custom" }, ...t },
               e
             );
           }
-          class wt extends Error {
+          class xt extends Error {
             constructor(t, e = "warn") {
               super(t),
                 (this.message = t),
@@ -3503,13 +3503,13 @@
             const [n, r] = t;
             return [n, [...r, e]];
           }
-          function It(t, e) {
+          function At(t, e) {
             t[1].forEach((t) => {
               var n = t[0].type;
               e(t, n);
             });
           }
-          function At(t, e) {
+          function It(t, e) {
             return (e || new TextEncoder()).encode(t);
           }
           function Rt(t, e) {
@@ -3517,8 +3517,8 @@
             let i = JSON.stringify(n);
             function s(t) {
               "string" == typeof i
-                ? (i = "string" == typeof t ? i + t : [At(i, e), t])
-                : i.push("string" == typeof t ? At(t, e) : t);
+                ? (i = "string" == typeof t ? i + t : [It(i, e), t])
+                : i.push("string" == typeof t ? It(t, e) : t);
             }
             for (var o of r) {
               const [t, e] = o;
@@ -3540,7 +3540,7 @@
                 })(i);
           }
           function kt(t, e) {
-            var n = "string" == typeof t.data ? At(t.data, e) : t.data;
+            var n = "string" == typeof t.data ? It(t.data, e) : t.data;
             return [
               k({
                 type: "attachment",
@@ -3579,7 +3579,7 @@
                 add: function (r) {
                   if (!(void 0 === t || e.length < t))
                     return J(
-                      new wt("Not adding Promise due to buffer limit reached.")
+                      new xt("Not adding Promise due to buffer limit reached.")
                     );
                   var i = r();
                   return (
@@ -3612,7 +3612,7 @@
               send: function (i) {
                 var s = [];
                 if (
-                  (It(i, (e, n) => {
+                  (At(i, (e, n) => {
                     var i = Pt(n);
                     !(function (t, e, n = Date.now()) {
                       return (
@@ -3629,7 +3629,7 @@
                   return z();
                 var o = Tt(i[0], s),
                   a = (e) => {
-                    It(o, (n, r) => {
+                    At(o, (n, r) => {
                       t.recordDroppedEvent(e, Pt(r));
                     });
                   };
@@ -3677,7 +3677,7 @@
                   .then(
                     (t) => t,
                     (t) => {
-                      if (t instanceof wt) return a("queue_overflow"), z();
+                      if (t instanceof xt) return a("queue_overflow"), z();
                       throw t;
                     }
                   );
@@ -4332,7 +4332,7 @@
               for (var s in t)
                 Object.prototype.hasOwnProperty.call(t, s) && (i[s] = t[s]);
             } catch (t) {}
-            w(i, t), x(t, "__sentry_wrapped__", i);
+            x(i, t), w(t, "__sentry_wrapped__", i);
             try {
               Object.getOwnPropertyDescriptor(i, "name").configurable &&
                 Object.defineProperty(i, "name", { get: () => t.name });
@@ -4522,10 +4522,10 @@
             }
             setupOnce() {
               var t = (0, s.R)();
-              this._options.setTimeout && E(t, "setTimeout", xe),
-                this._options.setInterval && E(t, "setInterval", xe),
+              this._options.setTimeout && E(t, "setTimeout", we),
+                this._options.setInterval && E(t, "setInterval", we),
                 this._options.requestAnimationFrame &&
-                  E(t, "requestAnimationFrame", we),
+                  E(t, "requestAnimationFrame", xe),
                 this._options.XMLHttpRequest &&
                   "XMLHttpRequest" in t &&
                   E(XMLHttpRequest.prototype, "send", Te);
@@ -4533,7 +4533,7 @@
               e && (Array.isArray(e) ? e : Se).forEach(Oe);
             }
           }
-          function xe(t) {
+          function we(t) {
             return function (...e) {
               var n = e[0];
               return (
@@ -4548,7 +4548,7 @@
               );
             };
           }
-          function we(t) {
+          function xe(t) {
             return function (e) {
               return t.apply(this, [
                 fe(e, {
@@ -4640,8 +4640,8 @@
               }));
           }
           Ee.__initStatic();
-          var Ie = ["fatal", "error", "warning", "log", "info", "debug"];
-          function Ae(t) {
+          var Ae = ["fatal", "error", "warning", "log", "info", "debug"];
+          function Ie(t) {
             if (!t) return {};
             var e = t.match(
               /^(([^:/?#]+):)?(\/\/([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?$/
@@ -4714,7 +4714,7 @@
                 data: { arguments: t.args, logger: "console" },
                 level:
                   ((e = t.level),
-                  "warn" === e ? "warning" : Ie.includes(e) ? e : "log"),
+                  "warn" === e ? "warning" : Ae.includes(e) ? e : "log"),
                 message: b(t.args, " "),
               };
             if ("assert" === t.level) {
@@ -4775,9 +4775,9 @@
             var e = (0, s.R)();
             let n = t.from,
               r = t.to;
-            var i = Ae(e.location.href);
-            let o = Ae(n);
-            var a = Ae(r);
+            var i = Ie(e.location.href);
+            let o = Ie(n);
+            var a = Ie(r);
             o.path || (o = i),
               i.protocol === a.protocol &&
                 i.host === a.host &&
@@ -4999,7 +4999,7 @@
             return "string" == typeof t
               ? (function (t) {
                   var e = Ge.exec(t);
-                  if (!e) throw new wt(`Invalid Sentry Dsn: ${t}`);
+                  if (!e) throw new xt(`Invalid Sentry Dsn: ${t}`);
                   const [n, r, i = "", s, o = "", a] = e.slice(1);
                   let c = "",
                     u = a;
@@ -5413,13 +5413,13 @@
               const { beforeSend: r, sampleRate: i } = this.getOptions();
               if (!this._isEnabled())
                 return J(
-                  new wt("SDK not enabled, will not capture event.", "log")
+                  new xt("SDK not enabled, will not capture event.", "log")
                 );
               var s = "transaction" === t.type;
               return !s && "number" == typeof i && Math.random() > i
                 ? (this.recordDroppedEvent("sample_rate", "error"),
                   J(
-                    new wt(
+                    new xt(
                       `Discarding event because it's not included in the random sample (sampling rate = ${i})`,
                       "log"
                     )
@@ -5432,7 +5432,7 @@
                             "event_processor",
                             t.type || "error"
                           ),
-                          new wt(
+                          new xt(
                             "An event processor returned null, will not send event.",
                             "log"
                           ))
@@ -5445,14 +5445,14 @@
                             if (_(t))
                               return t.then(
                                 (t) => {
-                                  if (!h(t) && null !== t) throw new wt(e);
+                                  if (!h(t) && null !== t) throw new xt(e);
                                   return t;
                                 },
                                 (t) => {
-                                  throw new wt(`beforeSend rejected with ${t}`);
+                                  throw new xt(`beforeSend rejected with ${t}`);
                                 }
                               );
-                            if (!h(t) && null !== t) throw new wt(e);
+                            if (!h(t) && null !== t) throw new xt(e);
                             return t;
                           })(r(n, e));
                     })
@@ -5463,7 +5463,7 @@
                             "before_send",
                             t.type || "error"
                           ),
-                          new wt(
+                          new xt(
                             "`beforeSend` returned `null`, will not send event.",
                             "log"
                           ))
@@ -5476,13 +5476,13 @@
                       );
                     })
                     .then(null, (t) => {
-                      if (t instanceof wt) throw t;
+                      if (t instanceof xt) throw t;
                       throw (
                         (this.captureException(t, {
                           data: { __sentry__: !0 },
                           originalException: t,
                         }),
-                        new wt(
+                        new xt(
                           `Event processing pipeline threw an error, original event will not be sent. Details have been sent as a new event.\nReason: ${t}`
                         ))
                       );
@@ -5700,7 +5700,7 @@
                     var n = fn.exec(e[2]);
                     n && ((e[2] = n[1]), (e[3] = n[2]), (e[4] = n[3]));
                   }
-                  const [t, r] = In(e[1] || dn, e[2]);
+                  const [t, r] = An(e[1] || dn, e[2]);
                   return pn(r, t, e[3] ? +e[3] : void 0, e[4] ? +e[4] : void 0);
                 }
               },
@@ -5724,7 +5724,7 @@
                   let t = e[3],
                     r = e[1] || dn;
                   return (
-                    ([r, t] = In(r, t)),
+                    ([r, t] = An(r, t)),
                     pn(t, r, e[4] ? +e[4] : void 0, e[5] ? +e[5] : void 0)
                   );
                 }
@@ -5749,18 +5749,18 @@
                 return e ? pn(e[2], e[3] || dn, +e[1]) : void 0;
               },
             ],
-            xn =
+            wn =
               / line (\d+), column (\d+)\s*(?:in (?:<anonymous function: ([^>]+)>|([^)]+))\(.*\))? in (.*):\s*$/i,
-            wn = [
+            xn = [
               20,
               (t) => {
-                var e = xn.exec(t);
+                var e = wn.exec(t);
                 return e ? pn(e[5], e[3] || e[4] || dn, +e[1], +e[2]) : void 0;
               },
             ],
             Tn = [_n, gn, bn],
             On = Qt(...Tn),
-            In = (t, e) => {
+            An = (t, e) => {
               var n = -1 !== t.indexOf("safari-extension"),
                 r = -1 !== t.indexOf("safari-web-extension");
               return n || r
@@ -5770,7 +5770,7 @@
                   ]
                 : [t, e];
             },
-            An = [
+            In = [
               new M(),
               new N(),
               new Ee(),
@@ -5782,7 +5782,7 @@
             ];
           function Rn(t = {}) {
             if (
-              (void 0 === t.defaultIntegrations && (t.defaultIntegrations = An),
+              (void 0 === t.defaultIntegrations && (t.defaultIntegrations = In),
               void 0 === t.release)
             ) {
               var e = (0, s.R)();
@@ -5885,13 +5885,13 @@
         3525: (t, e, n) => {
           n.r(e),
             n.d(e, {
-              BROWSER_TRACING_INTEGRATION_ID: () => wt,
+              BROWSER_TRACING_INTEGRATION_ID: () => xt,
               BrowserTracing: () => vt,
               IdleTransaction: () => Rt,
               Integrations: () => Nt,
-              Span: () => xt,
+              Span: () => wt,
               SpanStatus: () => Pt,
-              TRACEPARENT_REGEXP: () => At,
+              TRACEPARENT_REGEXP: () => It,
               Transaction: () => Et,
               addExtensionMethods: () => gt,
               defaultRequestInstrumentationOptions: () => Tt,
@@ -5901,7 +5901,7 @@
               instrumentOutgoingRequests: () => kt,
               spanStatusfromHttpCode: () => St,
               startIdleTransaction: () => Ct,
-              stripUrlQueryAndFragment: () => It,
+              stripUrlQueryAndFragment: () => At,
             });
           var r = n(2526),
             i = n(4038),
@@ -6071,8 +6071,8 @@
                 },
               }
             ),
-            x = {};
-          function w(t) {
+            w = {};
+          function x(t) {
             return "number" == typeof t && isFinite(t);
           }
           function T(t, { startTimestamp: e, ...n }) {
@@ -6084,15 +6084,15 @@
           function O(t) {
             return t / 1e3;
           }
-          function I() {
+          function A() {
             return h && h.addEventListener && h.performance;
           }
-          let A,
+          let I,
             R,
             k = 0,
             C = {};
           function P() {
-            const t = I();
+            const t = A();
             if (t && f.Z1) {
               t.mark && h.performance.mark("sentry-tracing-init"),
                 ((t) => {
@@ -6171,10 +6171,10 @@
                   if (s) {
                     r = _(t, n);
                     const e = () => {
-                      x[n.id] ||
+                      w[n.id] ||
                         (i(s.takeRecords()),
                         s.disconnect(),
-                        (x[n.id] = !0),
+                        (w[n.id] = !0),
                         r(!0));
                     };
                     return (
@@ -6189,7 +6189,7 @@
                   const e = t.entries.pop();
                   e &&
                     ((C.lcp = { value: t.value, unit: "millisecond" }),
-                    (A = e));
+                    (I = e));
                 });
               return () => {
                 e && e(), n && n();
@@ -6673,11 +6673,11 @@
                 y.sampled;
               const { location: b } = h,
                 S = (0, i.l)(e, y, r, s, !0, { location: b }, a),
-                x = e.getScope();
+                w = e.getScope();
               return (
                 c && p
-                  ? x.setPropagationContext(m)
-                  : x.setPropagationContext({
+                  ? w.setPropagationContext(m)
+                  : w.setPropagationContext({
                       traceId: S.traceId,
                       spanId: S.spanId,
                       parentSpanId: S.parentSpanId,
@@ -6686,7 +6686,7 @@
                 S.registerBeforeFinishCallback((t) => {
                   this._collectWebVitals(),
                     (function (t) {
-                      const e = I();
+                      const e = A();
                       if (!e || !h.performance.getEntries || !f.Z1) return;
                       const n = O(f.Z1),
                         r = e.getEntries();
@@ -6824,14 +6824,14 @@
                                 n.effectiveType
                               ),
                             n.type && t.setTag("connectionType", n.type),
-                            w(n.rtt) &&
+                            x(n.rtt) &&
                               (C["connection.rtt"] = {
                                 value: n.rtt,
                                 unit: "millisecond",
                               })),
-                            w(e.deviceMemory) &&
+                            x(e.deviceMemory) &&
                               t.setTag("deviceMemory", `${e.deviceMemory} GB`),
-                            w(e.hardwareConcurrency) &&
+                            x(e.hardwareConcurrency) &&
                               t.setTag(
                                 "hardwareConcurrency",
                                 String(e.hardwareConcurrency)
@@ -6872,13 +6872,13 @@
                             t.setMeasurement(e, C[e].value, C[e].unit);
                           }),
                           (function (t) {
-                            A &&
-                              (A.element &&
-                                t.setTag("lcp.element", d(A.element)),
-                              A.id && t.setTag("lcp.id", A.id),
-                              A.url &&
-                                t.setTag("lcp.url", A.url.trim().slice(0, 200)),
-                              t.setTag("lcp.size", A.size)),
+                            I &&
+                              (I.element &&
+                                t.setTag("lcp.element", d(I.element)),
+                              I.id && t.setTag("lcp.id", I.id),
+                              I.url &&
+                                t.setTag("lcp.url", I.url.trim().slice(0, 200)),
+                              t.setTag("lcp.size", I.size)),
                               R &&
                                 R.sources &&
                                 R.sources.forEach((e, n) =>
@@ -6886,7 +6886,7 @@
                                 );
                           })(t);
                       }
-                      (A = void 0), (R = void 0), (C = {});
+                      (I = void 0), (R = void 0), (C = {});
                     })(t);
                 }),
                 S
@@ -7876,12 +7876,12 @@
             bt = o.qG,
             St = X.Zd,
             Et = Z.Y,
-            xt = X.Dr,
-            wt = V,
+            wt = X.Dr,
+            xt = V,
             Tt = $,
             Ot = D.z,
-            It = Q,
-            At = o.Ke,
+            At = Q,
+            It = o.Ke,
             Rt = r.io,
             kt = H,
             Ct = i.l,
@@ -9740,6 +9740,10 @@
                                 "/22181265/Test_abcd"
                               ),
                               e.appendChild(i),
+                              (window.aaw = window.aaw || { cmd: [] }),
+                              window.aaw.cmd.push(function () {
+                                window.aaw.processAdsOnPage();
+                              }),
                               this._environment !== c.ENVIRONMENT.PRODUCTION &&
                                 console.log(
                                   "Couldn't fetch ad from the server!"
