@@ -9415,8 +9415,8 @@
                         case 2:
                           return (o = a.sent()), [3, 5];
                         case 3:
-                          if (
-                            ((p = a.sent()),
+                          return (
+                            (p = a.sent()),
                             this._adEventController.trackOnAdRequestFailed(
                               s(
                                 {
@@ -9442,10 +9442,10 @@
                             null === (i = this._classTransaction) ||
                               void 0 === i ||
                               i.finish(),
-                            this._environment !== c.ENVIRONMENT.PRODUCTION)
-                          )
-                            throw new Error(null == p ? void 0 : p.message);
-                          return [2];
+                            this._environment,
+                            c.ENVIRONMENT.PRODUCTION,
+                            [2]
+                          );
                         case 4:
                           return null == d || d.finish(), [7];
                         case 5:
