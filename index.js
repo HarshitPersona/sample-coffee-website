@@ -9702,8 +9702,8 @@
                 }),
                 (e.prototype.showAd = function (t) {
                   return o(this, void 0, void 0, function () {
-                    var t;
-                    return a(this, function (e) {
+                    var t, e;
+                    return a(this, function (n) {
                       if (!(t = document.getElementById(this._containerId))) {
                         if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                           throw new Error(
@@ -9715,12 +9715,11 @@
                       }
                       return (
                         this._isCreativePresent(t) ||
-                          (document
-                            .createElement("div")
-                            .setAttribute(
-                              "style",
-                              "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
-                            ),
+                          ((e = document.createElement("div")).setAttribute(
+                            "style",
+                            "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
+                          ),
+                          t.appendChild(e),
                           this._initRequest(),
                           void 0,
                           console.log("My Response- " + undefined),
