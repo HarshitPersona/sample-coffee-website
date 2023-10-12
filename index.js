@@ -9739,6 +9739,7 @@
                                 "data-aa-adunit",
                                 "/22181265/Test_abcd"
                               ),
+                              i.setAttribute("data-aa-sizes", "[[970,90]]"),
                               e.appendChild(i),
                               (window.aaw = window.aaw || { cmd: [] }),
                               window.aaw.cmd.push(function () {
