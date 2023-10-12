@@ -9725,6 +9725,11 @@
                               ),
                               e.appendChild(n),
                               this._initRequest(),
+                              e.setAttribute("data-aaad", "true"),
+                              e.setAttribute(
+                                "data-aa-adunit",
+                                "/22181265/Test_abcd"
+                              ),
                               [4, this._fetchAd(t)]);
                         case 1:
                           if (
@@ -9733,11 +9738,6 @@
                             !r)
                           )
                             return (
-                              e.setAttribute("data-aaad", "true"),
-                              e.setAttribute(
-                                "data-aa-adunit",
-                                "/22181265/Test_abcd"
-                              ),
                               this._environment !== c.ENVIRONMENT.PRODUCTION &&
                                 console.log(
                                   "Couldn't fetch ad from the server!"
