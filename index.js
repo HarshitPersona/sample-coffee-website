@@ -9730,6 +9730,7 @@
                           if (!(r = i.sent()))
                             return (
                               console.log("My Response- " + r),
+                              e.removeChild(n),
                               e.setAttribute("data-aaad", "true"),
                               e.setAttribute(
                                 "data-aa-adunit",
