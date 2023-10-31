@@ -9707,7 +9707,8 @@
                       switch (s.label) {
                         case 0:
                           if (
-                            !(e = document.getElementById(this._containerId))
+                            (console.log("Starting showAd"),
+                            !(e = document.getElementById(this._containerId)))
                           ) {
                             if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                               throw new Error(
@@ -9725,6 +9726,7 @@
                               ),
                               e.appendChild(n),
                               this._initRequest(),
+                              console.log("Starting fetchAd"),
                               [4, this._fetchAd(t)]);
                         case 1:
                           if (!(r = s.sent()))
