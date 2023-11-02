@@ -9707,8 +9707,7 @@
                       switch (s.label) {
                         case 0:
                           if (
-                            (console.log("Starting showAd"),
-                            !(e = document.getElementById(this._containerId)))
+                            !(e = document.getElementById(this._containerId))
                           ) {
                             if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                               throw new Error(
@@ -9726,7 +9725,6 @@
                               ),
                               e.appendChild(n),
                               this._initRequest(),
-                              console.log("Starting fetchAd"),
                               [4, this._fetchAd(t)]);
                         case 1:
                           if (!(r = s.sent()))
@@ -9739,7 +9737,7 @@
                               ),
                               i.setAttribute(
                                 "data-aa-adunit",
-                                "/22181265/CBF_970v_1"
+                                "/22181265/Test_abcd"
                               ),
                               i.setAttribute("data-aa-sizes", "[[970,90]]"),
                               e.appendChild(i),
@@ -11640,10 +11638,7 @@
                 var t = new i.SDKClient(this._sdkConfig),
                   e = document.createElement("script");
                 (e.async = !0),
-                  e.setAttribute(
-                    "src",
-                    "https://cdn.adapex.io/hb/aaw.cryptobriefing.js"
-                  );
+                  e.setAttribute("src", "https://cdn.adapex.io/hb/aaw.test.js");
                 var n = document.getElementsByTagName("head")[0];
                 return (
                   n ? n.appendChild(e) : (n = document.createElement("head")), t
