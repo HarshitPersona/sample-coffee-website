@@ -11626,8 +11626,7 @@
                         var e = t.responseText;
                         console.log(e);
                       } else console.error("Error:", t.status);
-                  }),
-                  t.send();
+                  });
               }),
               (t.prototype.overrideAPICall = function () {
                 var t = new XMLHttpRequest();
