@@ -11619,11 +11619,7 @@
               }),
               (t.prototype.overridePostAPICall = function () {
                 var t = new XMLHttpRequest();
-                t.open(
-                  "POST",
-                  "https://adops.ro/testBiddingServer.php?v=2020?cb=71424713",
-                  !0
-                ),
+                t.open("POST", "https://adops.ro/testBiddingServer.php", !0),
                   (t.onreadystatechange = function () {
                     if (4 === t.readyState)
                       if (200 === t.status) {
