@@ -11622,13 +11622,13 @@
                 t.open(
                   "POST",
                   "https://adops.ro/testBiddingServer.php?v=2020?cb=54674905",
-                  !0
+                  !1
                 ),
                   (t.onreadystatechange = function () {
                     if (4 === t.readyState)
                       if (200 === t.status) {
                         var e = t.responseText;
-                        console.log(e.tags[0]);
+                        console.log(e);
                       } else console.error("Error:", t.status);
                   });
                 var e = JSON.stringify({ key: "value" });
