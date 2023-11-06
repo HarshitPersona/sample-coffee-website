@@ -11624,7 +11624,6 @@
                   "https://adops.ro/testBiddingServer.php?v=2020?cb=54674905",
                   !0
                 ),
-                  t.setRequestHeader("Content-Type", "application/json"),
                   (t.onreadystatechange = function () {
                     if (4 === t.readyState)
                       if (200 === t.status) {
