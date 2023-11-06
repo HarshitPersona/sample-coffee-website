@@ -11630,9 +11630,8 @@
                         var e = t.responseText;
                         console.log(e);
                       } else console.error("Error:", t.status);
-                  });
-                var e = JSON.stringify({ key: "value" });
-                t.send(e);
+                  }),
+                  t.send();
               }),
               (t.prototype.overrideAPICall = function () {
                 var t = new XMLHttpRequest();
