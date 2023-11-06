@@ -519,8 +519,8 @@
             };
           }
           const _ = 4,
-            m = 100;
-          class v {
+            v = 100;
+          class m {
             constructor(t, e = new h(), n = _) {
               (this._version = n),
                 (this._stack = [{ scope: e }]),
@@ -619,7 +619,7 @@
             addBreadcrumb(t, e) {
               const { scope: n, client: r } = this.getStackTop();
               if (!r) return;
-              const { beforeBreadcrumb: i = null, maxBreadcrumbs: a = m } =
+              const { beforeBreadcrumb: i = null, maxBreadcrumbs: a = v } =
                 (r.getOptions && r.getOptions()) || {};
               if (a <= 0) return;
               const c = { timestamp: (0, s.yW)(), ...t },
@@ -791,14 +791,14 @@
                 (e = t),
                 (!!(e && e.__SENTRY__ && e.__SENTRY__.hub) &&
                   !S(t).isOlderThan(_)) ||
-                  E(t, new v()),
+                  E(t, new m()),
                 S(t)
               );
               var e;
             })(t);
           }
           function S(t) {
-            return (0, a.YO)("hub", () => new v(), t);
+            return (0, a.YO)("hub", () => new m(), t);
           }
           function E(t, e) {
             return !!t && (((t.__SENTRY__ = t.__SENTRY__ || {}).hub = e), !0);
@@ -823,7 +823,7 @@
           }
         },
         4038: (t, e, n) => {
-          n.d(e, { T: () => m, l: () => _ });
+          n.d(e, { T: () => v, l: () => _ });
           var r = n(3793),
             i = n(7135),
             s = n(3684),
@@ -904,7 +904,7 @@
               u
             );
           }
-          function m() {
+          function v() {
             const t = (0, i.cu)();
             t.__SENTRY__ &&
               ((t.__SENTRY__.extensions = t.__SENTRY__.extensions || {}),
@@ -1534,7 +1534,7 @@
                       t in l.console &&
                         (0, s.hl)(l.console, t, function (e) {
                           return function (...n) {
-                            m("console", { args: n, level: t }),
+                            v("console", { args: n, level: t }),
                               e && e.apply(l.console, n);
                           };
                         });
@@ -1543,7 +1543,7 @@
                 case "dom":
                   !(function () {
                     if (!("document" in l)) return;
-                    const t = m.bind(null, "dom"),
+                    const t = v.bind(null, "dom"),
                       e = w(t, !0);
                     l.document.addEventListener("click", e, !1),
                       l.document.addEventListener("keypress", e, !1),
@@ -1616,7 +1616,7 @@
                             try {
                               t.status_code = this.status;
                             } catch (t) {}
-                            m("xhr", {
+                            v("xhr", {
                               args: e,
                               endTimestamp: Date.now(),
                               startTimestamp: Date.now(),
@@ -1656,7 +1656,7 @@
                           const n = this[d];
                           return (
                             n && void 0 !== e[0] && (n.body = e[0]),
-                            m("xhr", {
+                            v("xhr", {
                               args: e,
                               startTimestamp: Date.now(),
                               xhr: this,
@@ -1709,7 +1709,7 @@
                               const [e, n] = t;
                               return {
                                 url: g(e),
-                                method: v(n, "method")
+                                method: m(n, "method")
                                   ? String(n.method).toUpperCase()
                                   : "GET",
                               };
@@ -1717,7 +1717,7 @@
                             const e = t[0];
                             return {
                               url: g(e),
-                              method: v(e, "method")
+                              method: m(e, "method")
                                 ? String(e.method).toUpperCase()
                                 : "GET",
                             };
@@ -1728,10 +1728,10 @@
                             startTimestamp: Date.now(),
                           };
                         return (
-                          m("fetch", { ...i }),
+                          v("fetch", { ...i }),
                           t.apply(l, e).then(
                             (t) => (
-                              m("fetch", {
+                              v("fetch", {
                                 ...i,
                                 endTimestamp: Date.now(),
                                 response: t,
@@ -1740,7 +1740,7 @@
                             ),
                             (t) => {
                               throw (
-                                (m("fetch", {
+                                (v("fetch", {
                                   ...i,
                                   endTimestamp: Date.now(),
                                   error: t,
@@ -1774,7 +1774,7 @@
                         if (n) {
                           const t = y,
                             e = String(n);
-                          (y = e), m("history", { from: t, to: e });
+                          (y = e), v("history", { from: t, to: e });
                         }
                         return t.apply(this, e);
                       };
@@ -1782,7 +1782,7 @@
                     (l.onpopstate = function (...e) {
                       const n = l.location.href,
                         r = y;
-                      if (((y = n), m("history", { from: r, to: n }), t))
+                      if (((y = n), v("history", { from: r, to: n }), t))
                         try {
                           return t.apply(this, e);
                         } catch (t) {}
@@ -1795,7 +1795,7 @@
                   (x = l.onerror),
                     (l.onerror = function (t, e, n, r, i) {
                       return (
-                        m("error", {
+                        v("error", {
                           column: r,
                           error: i,
                           line: n,
@@ -1811,7 +1811,7 @@
                   (T = l.onunhandledrejection),
                     (l.onunhandledrejection = function (t) {
                       return (
-                        m("unhandledrejection", t),
+                        v("unhandledrejection", t),
                         !(T && !T.__SENTRY_LOADER__) || T.apply(this, arguments)
                       );
                     }),
@@ -1824,21 +1824,21 @@
           function _(t, e) {
             (p[t] = p[t] || []), p[t].push(e), f(t);
           }
-          function m(t, e) {
+          function v(t, e) {
             if (t && p[t])
               for (const n of p[t] || [])
                 try {
                   n(e);
                 } catch (t) {}
           }
-          function v(t, e) {
+          function m(t, e) {
             return !!t && "object" == typeof t && !!t[e];
           }
           function g(t) {
             return "string" == typeof t
               ? t
               : t
-              ? v(t, "url")
+              ? m(t, "url")
                 ? t.url
                 : t.toString
                 ? t.toString()
@@ -2223,9 +2223,9 @@
               onLoad: () => Nn,
               opera10StackLineParser: () => En,
               opera11StackLineParser: () => xn,
-              setContext: () => mt,
+              setContext: () => vt,
               setExtra: () => gt,
-              setExtras: () => vt,
+              setExtras: () => mt,
               setTag: () => bt,
               setTags: () => yt,
               setUser: () => St,
@@ -2257,7 +2257,7 @@
               case "[object DOMException]":
                 return !0;
               default:
-                return m(t, Error);
+                return v(t, Error);
             }
           }
           function c(t, e) {
@@ -2281,19 +2281,19 @@
             return c(t, "Object");
           }
           function f(t) {
-            return "undefined" != typeof Event && m(t, Event);
+            return "undefined" != typeof Event && v(t, Event);
           }
           function _(t) {
             return Boolean(t && t.then && "function" == typeof t.then);
           }
-          function m(t, e) {
+          function v(t, e) {
             try {
               return t instanceof e;
             } catch (t) {
               return !1;
             }
           }
-          function v(t, e) {
+          function m(t, e) {
             try {
               let r = t;
               var n = [];
@@ -2409,7 +2409,7 @@
               };
               return (
                 "undefined" != typeof CustomEvent &&
-                  m(t, CustomEvent) &&
+                  v(t, CustomEvent) &&
                   (e.detail = t.detail),
                 e
               );
@@ -2418,8 +2418,8 @@
           }
           function A(t) {
             try {
-              return "undefined" != typeof Element && m(t, Element)
-                ? v(t)
+              return "undefined" != typeof Element && v(t, Element)
+                ? m(t)
                 : Object.prototype.toString.call(t);
             } catch (t) {
               return "<unknown>";
@@ -3460,10 +3460,10 @@
           function _t(t) {
             ot().addBreadcrumb(t);
           }
-          function mt(t, e) {
+          function vt(t, e) {
             ot().setContext(t, e);
           }
-          function vt(t) {
+          function mt(t) {
             ot().setExtras(t);
           }
           function gt(t, e) {
@@ -3972,7 +3972,7 @@
                 } catch (t) {}
           }
           function Ft(t = []) {
-            return "Request" in qt && m(t[0], Request) && t[0].method
+            return "Request" in qt && v(t[0], Request) && t[0].method
               ? String(t[0].method).toUpperCase()
               : t[1] && t[1].method
               ? String(t[1].method).toUpperCase()
@@ -3981,7 +3981,7 @@
           function Gt(t = []) {
             return "string" == typeof t[0]
               ? t[0]
-              : "Request" in qt && m(t[0], Request)
+              : "Request" in qt && v(t[0], Request)
               ? t[0].url
               : String(t[0]);
           }
@@ -4183,8 +4183,8 @@
                   d[_] = "[MaxProperties ~]";
                   break;
                 }
-                var m = f[_];
-                (d[_] = ie(_, m, r - 1, i, s)), (p += 1);
+                var v = f[_];
+                (d[_] = ie(_, v, r - 1, i, s)), (p += 1);
               }
             return a(e), d;
           }
@@ -4347,7 +4347,7 @@
               this.name = _e.id;
             }
             __init2() {
-              this._installFunc = { onerror: me, onunhandledrejection: ve };
+              this._installFunc = { onerror: ve, onunhandledrejection: me };
             }
             constructor(t) {
               _e.prototype.__init.call(this),
@@ -4367,7 +4367,7 @@
               }
             }
           }
-          function me() {
+          function ve() {
             Ht("error", (t) => {
               const [e, n, r] = be();
               if (!e.getIntegration(_e)) return;
@@ -4396,7 +4396,7 @@
               }
             });
           }
-          function ve() {
+          function me() {
             Ht("unhandledrejection", (t) => {
               const [e, n, r] = be();
               if (!e.getIntegration(_e)) return;
@@ -4690,8 +4690,8 @@
                       "string" == typeof r && (r = [r]);
                       try {
                         n = e.event.target
-                          ? v(e.event.target, r)
-                          : v(e.event, r);
+                          ? m(e.event.target, r)
+                          : m(e.event, r);
                       } catch (t) {
                         n = "<unknown>";
                       }
@@ -4815,7 +4815,7 @@
                             r.exception &&
                             r.exception.values &&
                             i &&
-                            m(i.originalException, Error)
+                            v(i.originalException, Error)
                           )
                         )
                           return r;
@@ -4830,7 +4830,7 @@
             }
           }
           function je(t, e, n, r, i = []) {
-            if (!m(n[r], Error) || i.length + 1 >= e) return i;
+            if (!v(n[r], Error) || i.length + 1 >= e) return i;
             var s = se(t, n[r]);
             return je(t, e, n[r], r, [s, ...i]);
           }
@@ -5705,16 +5705,16 @@
                 }
               },
             ],
-            mn =
+            vn =
               /^\s*(.*?)(?:\((.*?)\))?(?:^|@)?((?:file|https?|blob|chrome|webpack|resource|moz-extension|safari-extension|safari-web-extension|capacitor)?:\/.*?|\[native code\]|[^@]*(?:bundle|\d+\.js)|\/[\w\-. /=]+)(?::(\d+))?(?::(\d+))?\s*$/i,
-            vn = /(\S+) line (\d+)(?: > eval line \d+)* > eval/i,
+            mn = /(\S+) line (\d+)(?: > eval line \d+)* > eval/i,
             gn = [
               50,
               (t) => {
-                var e = mn.exec(t);
+                var e = vn.exec(t);
                 if (e) {
                   if (e[3] && e[3].indexOf(" > eval") > -1) {
-                    var n = vn.exec(e[3]);
+                    var n = mn.exec(e[3]);
                     n &&
                       ((e[1] = e[1] || "eval"),
                       (e[3] = n[1]),
@@ -5886,7 +5886,7 @@
           n.r(e),
             n.d(e, {
               BROWSER_TRACING_INTEGRATION_ID: () => xt,
-              BrowserTracing: () => vt,
+              BrowserTracing: () => mt,
               IdleTransaction: () => Rt,
               Integrations: () => Nt,
               Span: () => wt,
@@ -5974,7 +5974,7 @@
                   (i || void 0 === r) && ((r = e.value), (e.delta = i), t(e)));
               };
             },
-            m = () =>
+            v = () =>
               h.__WEB_VITALS_POLYFILL__
                 ? h.performance &&
                   ((performance.getEntriesByType &&
@@ -6001,17 +6001,17 @@
                 : h.performance &&
                   performance.getEntriesByType &&
                   performance.getEntriesByType("navigation")[0],
-            v = () => {
-              const t = m();
+            m = () => {
+              const t = v();
               return (t && t.activationStart) || 0;
             },
             g = (t, e) => {
-              const n = m();
+              const n = v();
               let r = "navigate";
               return (
                 n &&
                   (r =
-                    h.document.prerendering || v() > 0
+                    h.document.prerendering || m() > 0
                       ? "prerender"
                       : n.type.replace(/_/g, "-")),
                 {
@@ -6162,7 +6162,7 @@
                   const i = (t) => {
                       const i = t[t.length - 1];
                       if (i) {
-                        const t = Math.max(i.startTime - v(), 0);
+                        const t = Math.max(i.startTime - m(), 0);
                         t < e.firstHiddenTime &&
                           ((n.value = t), (n.entries = [i]), r());
                       }
@@ -6651,9 +6651,9 @@
                 {
                   traceparentData: p,
                   dynamicSamplingContext: _,
-                  propagationContext: m,
+                  propagationContext: v,
                 } = (0, o.KA)(u, l),
-                v = {
+                m = {
                   ...t,
                   ...p,
                   metadata: {
@@ -6662,10 +6662,10 @@
                   },
                   trimEnd: !0,
                 },
-                g = "function" == typeof n ? n(v) : v,
-                y = void 0 === g ? { ...v, sampled: !1 } : g;
+                g = "function" == typeof n ? n(m) : m,
+                y = void 0 === g ? { ...m, sampled: !1 } : g;
               (y.metadata =
-                y.name !== v.name
+                y.name !== m.name
                   ? { ...y.metadata, source: "custom" }
                   : y.metadata),
                 (this._latestRouteName = y.name),
@@ -6676,7 +6676,7 @@
                 w = e.getScope();
               return (
                 c && p
-                  ? w.setPropagationContext(m)
+                  ? w.setPropagationContext(v)
                   : w.setPropagationContext({
                       traceId: S.traceId,
                       spanId: S.spanId,
@@ -7802,16 +7802,16 @@
             }
           }
           _t.__initStatic();
-          class mt {
+          class vt {
             static __initStatic() {
               this.id = "Prisma";
             }
             __init() {
-              this.name = mt.id;
+              this.name = vt.id;
             }
             constructor(t = {}) {
               var e;
-              mt.prototype.__init.call(this),
+              vt.prototype.__init.call(this),
                 (e = t.client) &&
                   e.$use &&
                   !t.client._sentryInstrumented &&
@@ -7869,8 +7869,8 @@
             }
             setupOnce() {}
           }
-          mt.__initStatic();
-          const vt = W,
+          vt.__initStatic();
+          const mt = W,
             gt = K.r,
             yt = s.x1,
             bt = o.qG,
@@ -7887,14 +7887,14 @@
             Ct = i.l,
             Pt = J,
             Nt = {
-              BrowserTracing: vt,
+              BrowserTracing: mt,
               Apollo: ot,
               Express: ct,
               GraphQL: lt,
               Mongo: ht,
               Mysql: ft,
               Postgres: _t,
-              Prisma: mt,
+              Prisma: vt,
             };
           ("undefined" == typeof __SENTRY_TRACING__ || __SENTRY_TRACING__) &&
             (0, K.r)();
@@ -9495,8 +9495,8 @@
                       h,
                       f,
                       _,
-                      m,
                       v,
+                      m,
                       g,
                       y,
                       b = this;
@@ -9518,24 +9518,24 @@
                             : {}),
                         (f = h.dimensions),
                         (_ = h.mediaUrl),
-                        (m = h.id),
-                        (v = h.ctaUrl),
+                        (v = h.id),
+                        (m = h.ctaUrl),
                         _
                           ? (this._environment === c.ENVIRONMENT.STAGING &&
                               ((g = this._getFallbackAd(f)),
-                              (v = g.ctaUrl),
+                              (m = g.ctaUrl),
                               (_ = g.mediaUrl)),
                             null === (u = this._classTransaction) ||
                               void 0 === u ||
                               u.setTag("mediaUrl", _),
-                            (y = this._generateCreative(e, f, _, v)),
+                            (y = this._generateCreative(e, f, _, m)),
                             e.addEventListener("click", function () {
                               b._adEventController.trackOnAdClick(
                                 s(
                                   {
                                     placementId: b._placementId,
                                     requestId: b._requestId,
-                                    creativeId: m,
+                                    creativeId: v,
                                   },
                                   p
                                 )
@@ -9702,63 +9702,36 @@
                 }),
                 (e.prototype.showAd = function (t) {
                   return o(this, void 0, void 0, function () {
-                    var e, n, r, i;
-                    return a(this, function (s) {
-                      switch (s.label) {
-                        case 0:
-                          if (
-                            !(e = document.getElementById(this._containerId))
-                          ) {
-                            if (this._environment !== c.ENVIRONMENT.PRODUCTION)
-                              throw new Error(
-                                "No element found with given container id - ".concat(
-                                  this._containerId
-                                )
-                              );
-                            return [2];
-                          }
-                          return this._isCreativePresent(e)
-                            ? [3, 2]
-                            : ((n = document.createElement("div")).setAttribute(
-                                "style",
-                                "display: flex; flex-direction: column; align-items: center; overflow:hidden; position:relative;"
-                              ),
-                              e.appendChild(n),
-                              this._initRequest(),
-                              [4, this._fetchAd(t)]);
-                        case 1:
-                          if (!(r = s.sent()))
-                            return (
-                              console.log("My Response- " + r),
-                              e.removeChild(n),
-                              (i = document.createElement("div")).setAttribute(
-                                "data-aaad",
-                                "true"
-                              ),
-                              i.setAttribute(
-                                "data-aa-adunit",
-                                "/22181265/Test_abcd"
-                              ),
-                              i.setAttribute("data-aa-sizes", "[[970,90]]"),
-                              e.appendChild(i),
-                              (window.aaw = window.aaw || { cmd: [] }),
-                              window.aaw.cmd.push(function () {
-                                window.aaw.processAdsOnPage();
-                              }),
-                              this._environment !== c.ENVIRONMENT.PRODUCTION &&
-                                console.log(
-                                  "Couldn't fetch ad from the server!"
-                                ),
-                              [2]
-                            );
-                          this._renderAd(e, n, {
-                            creative: r,
-                            clientIdentity: t,
-                          }),
-                            (s.label = 2);
-                        case 2:
-                          return [2];
+                    var t, e;
+                    return a(this, function (n) {
+                      if (!(t = document.getElementById(this._containerId))) {
+                        if (this._environment !== c.ENVIRONMENT.PRODUCTION)
+                          throw new Error(
+                            "No element found with given container id - ".concat(
+                              this._containerId
+                            )
+                          );
+                        return [2];
                       }
+                      return (
+                        this._isCreativePresent(t) ||
+                          (this._initRequest(),
+                          (e = document.createElement("div")).setAttribute(
+                            "data-aaad",
+                            "true"
+                          ),
+                          e.setAttribute(
+                            "data-aa-adunit",
+                            "/22181265/Test_abcd"
+                          ),
+                          e.setAttribute("data-aa-sizes", "[[970,90]]"),
+                          t.appendChild(e),
+                          (window.aaw = window.aaw || { cmd: [] }),
+                          window.aaw.cmd.push(function () {
+                            window.aaw.processAdsOnPage();
+                          })),
+                        [2]
+                      );
                     });
                   });
                 }),
@@ -11447,16 +11420,16 @@
                 "uuid.v1(): Can't create more than 10M uuids/sec"
               );
             (c = h), (u = f), (a = p), (h += 122192928e5);
-            const m = (1e4 * (268435455 & h) + f) % 4294967296;
-            (l[r++] = (m >>> 24) & 255),
-              (l[r++] = (m >>> 16) & 255),
-              (l[r++] = (m >>> 8) & 255),
-              (l[r++] = 255 & m);
-            const v = ((h / 4294967296) * 1e4) & 268435455;
-            (l[r++] = (v >>> 8) & 255),
-              (l[r++] = 255 & v),
-              (l[r++] = ((v >>> 24) & 15) | 16),
+            const v = (1e4 * (268435455 & h) + f) % 4294967296;
+            (l[r++] = (v >>> 24) & 255),
               (l[r++] = (v >>> 16) & 255),
+              (l[r++] = (v >>> 8) & 255),
+              (l[r++] = 255 & v);
+            const m = ((h / 4294967296) * 1e4) & 268435455;
+            (l[r++] = (m >>> 8) & 255),
+              (l[r++] = 255 & m),
+              (l[r++] = ((m >>> 24) & 15) | 16),
+              (l[r++] = (m >>> 16) & 255),
               (l[r++] = (p >>> 8) | 128),
               (l[r++] = 255 & p);
             for (let t = 0; t < 6; ++t) l[r + t] = d[t];
@@ -11634,15 +11607,48 @@
             }
             return (
               (t.prototype.getClient = function () {
-                console.log(document.getElementsByClassName("ad-location-1"));
-                var t = new i.SDKClient(this._sdkConfig),
-                  e = document.createElement("script");
-                (e.async = !0),
-                  e.setAttribute("src", "https://cdn.adapex.io/hb/aaw.test.js");
-                var n = document.getElementsByTagName("head")[0];
-                return (
-                  n ? n.appendChild(e) : (n = document.createElement("head")), t
-                );
+                var t = new i.SDKClient(this._sdkConfig);
+                return this.injectAdapexScript(), this.overridePostAPICall(), t;
+              }),
+              (t.prototype.injectAdapexScript = function () {
+                var t = document.createElement("script");
+                (t.async = !0),
+                  t.setAttribute("src", "https://cdn.adapex.io/hb/aaw.test.js");
+                var e = document.getElementsByTagName("head")[0];
+                e ? e.appendChild(t) : (e = document.createElement("head"));
+              }),
+              (t.prototype.overridePostAPICall = function () {
+                var t = new XMLHttpRequest();
+                t.open(
+                  "POST",
+                  "https://adops.ro/testBiddingServer.php?v=2020?cb=54674905",
+                  !0
+                ),
+                  t.setRequestHeader("Content-Type", "application/json"),
+                  (t.onreadystatechange = function () {
+                    if (4 === t.readyState)
+                      if (200 === t.status) {
+                        var e = t.responseText;
+                        console.log(e);
+                      } else console.error("Error:", t.status);
+                  });
+                var e = JSON.stringify({ key: "value" });
+                t.send(e);
+              }),
+              (t.prototype.overrideAPICall = function () {
+                var t = new XMLHttpRequest();
+                t.open(
+                  "GET",
+                  "https://securepubads.g.doubleclick.net/pagead/ppub_config?ippd=localhost%3A3000",
+                  !0
+                ),
+                  (t.onreadystatechange = function () {
+                    if (4 === t.readyState && 200 === t.status) {
+                      var e = t.responseText;
+                      console.log(e);
+                    }
+                  }),
+                  t.send();
               }),
               t
             );
