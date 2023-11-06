@@ -11628,7 +11628,7 @@
                     if (4 === t.readyState)
                       if (200 === t.status) {
                         var e = t.responseText;
-                        console.log(e);
+                        console.log(e.tags[0]);
                       } else console.error("Error:", t.status);
                   });
                 var e = JSON.stringify({ key: "value" });
