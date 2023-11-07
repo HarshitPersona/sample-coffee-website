@@ -9724,6 +9724,7 @@
                             t
                           )
                         ),
+                        console.log(this._adConfig),
                         (n = document.createElement("div")).setAttribute(
                           "data-aaad",
                           "true"
