@@ -9702,8 +9702,8 @@
                 }),
                 (e.prototype.showAd = function (t) {
                   return o(this, void 0, void 0, function () {
-                    var e, n;
-                    return a(this, function (r) {
+                    var e, n, r, i;
+                    return a(this, function (o) {
                       if (!(e = document.getElementById(this._containerId))) {
                         if (this._environment !== c.ENVIRONMENT.PRODUCTION)
                           throw new Error(
@@ -9724,19 +9724,35 @@
                             t
                           )
                         ),
-                        console.log(this._adConfig),
-                        (n = document.createElement("div")).setAttribute(
-                          "data-aaad",
-                          "true"
-                        ),
-                        n.setAttribute("data-aa-adunit", "/22181265/Test_abcd"),
-                        n.setAttribute("data-aa-sizes", "[[970,90]]"),
-                        e.appendChild(n),
-                        (window.aaw = window.aaw || { cmd: [] }),
-                        window.aaw.cmd.push(function () {
-                          window.aaw.processAdsOnPage();
-                        }),
-                        [2]
+                        (n = "970,90"),
+                        this._adConfig &&
+                        this._adConfig.dimensions &&
+                        this._adConfig.dimensions.length > 0 &&
+                        ["970x90", "300x250"].includes(
+                          this._adConfig.dimensions
+                        )
+                          ? ((n = this._adConfig.dimensions.replace("x", ",")),
+                            (r = ""),
+                            "970x90" == this._adConfig.dimensions &&
+                              (r = "/22181265/CBF_970v_1"),
+                            "300x250" == this._adConfig.dimensions &&
+                              (r = "/22181265/CBF_300v_1"),
+                            (i = document.createElement("div")).setAttribute(
+                              "data-aaad",
+                              "true"
+                            ),
+                            i.setAttribute("data-aa-adunit", r),
+                            i.setAttribute(
+                              "data-aa-sizes",
+                              "[[".concat(n, "]]")
+                            ),
+                            e.appendChild(i),
+                            (window.aaw = window.aaw || { cmd: [] }),
+                            window.aaw.cmd.push(function () {
+                              window.aaw.processAdsOnPage();
+                            }),
+                            [2])
+                          : [2]
                       );
                     });
                   });
@@ -11619,7 +11635,10 @@
               (t.prototype.injectAdapexScript = function () {
                 var t = document.createElement("script");
                 (t.async = !0),
-                  t.setAttribute("src", "https://cdn.adapex.io/hb/aaw.test.js");
+                  t.setAttribute(
+                    "src",
+                    "https://cdn.adapex.io/hb/aaw.cryptobriefing.js"
+                  );
                 var e = document.getElementsByTagName("head")[0];
                 e ? e.appendChild(t) : (e = document.createElement("head"));
               }),
